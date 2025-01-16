@@ -1,21 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
-// Aquí podrías usar import en lugar de require si actualizas tu configuración
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const {send} = require('micro')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const methods = require('micro-method-router')
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'GET') {
-    const notification = req.body;
-    // Validar la firma del webhook aquí
-
-    // Procesar la notificación
-    console.log('Webhook received', notification);
-
-    // Guardar o procesar los datos recibidos, por ejemplo, en una base de datos
-    // ...
-
-    // Confirmar la recepción
-    res.status(200).end();
-  } else {
-    res.setHeader('Allow', ['GET']);
-    res.status(405).end('Method Not Allowed');
-  }
-}
+export default methods({
+  async get(req: NextApiRequest, res: NextApiResponse) {
+    const payload = req.body
+    if (payload.type === "payment") {
+        const mpPayment = await payload.data.id;
+        console.log(mpPayment);
+        
+    }
+    console.log(payload);
+    res.send({ok:true})
+  }})
