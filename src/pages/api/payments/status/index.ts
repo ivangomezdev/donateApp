@@ -1,7 +1,4 @@
 
-
-import { createSingleProductPreference } from "@/lib/mercadopago"
-import { myProducts } from "@/lib/products"
 import { NextApiRequest, NextApiResponse } from "next"
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const {send} = require('micro')
@@ -12,7 +9,7 @@ export default methods({
   async get(req: NextApiRequest, res: NextApiResponse) {
     try {
       const resData = res
-      console.log(res);
+      console.log(resData);
       
         
       
