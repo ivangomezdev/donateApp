@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 const PaymentStatusPage = () => {
   useEffect(() => {
     const fetchPaymentStatus = async () => {
-      const response = await fetch("/api/payment/status");
+      const response = await fetch("/api/payments/status");
       const data = await response.json();
       console.log(data);
       
