@@ -1,11 +1,6 @@
 "use client";
 import React from "react";
-import useSWR from "swr";
 
-type Product = {
-  id: string;
-  // Añade aquí otros campos según lo que contenga cada producto
-};
 
 const Bff = () => {
   const applyPayment = async () => {

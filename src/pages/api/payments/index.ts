@@ -1,8 +1,12 @@
+
+
 import { createSingleProductPreference } from "@/lib/mercadopago"
-import { methods, send } from "@/lib/micro"
 import { myProducts } from "@/lib/products"
 import { NextApiRequest, NextApiResponse } from "next"
-
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const {send} = require('micro')
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const methods = require('micro-method-router')
 
 export default methods({
   async get(req: NextApiRequest, res: NextApiResponse) {
@@ -17,6 +21,6 @@ export default methods({
     } catch (error) {
       // Manejo de errores, por ejemplo:
       console.error('Error creating preference:', error);
-      return send(res, 500, { error: 'Error creating payment preference' }, 'Error processing request');
+      return send(res, 500, { error: 'Error creating payment preference' });
     }
   }})
