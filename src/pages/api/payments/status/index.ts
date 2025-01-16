@@ -1,23 +1,21 @@
+import { NextApiRequest, NextApiResponse } from "next";
+// Aquí podrías usar import en lugar de require si actualizas tu configuración
 
-import { NextApiRequest, NextApiResponse } from "next"
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const {send} = require('micro')
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const methods = require('micro-method-router')
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'POST') {
+    const notification = req.body;
+    // Validar la firma del webhook aquí
 
-export default methods({
-  async get(req: NextApiRequest, res: NextApiResponse) {
-    try {
-      const resData = res
-      console.log(resData);
-      
-        
-      
-      // Aquí podrías usar 'response' si es necesario, por ejemplo, para devolver algo del resultado de la preferencia
-      return send(res, 200);
-    } catch (error) {
-      // Manejo de errores, por ejemplo:
-      console.error('Error creating preference:', error);
-      return send(res, 500, { error: 'Error creating payment preference' });
-    }
-  }})
+    // Procesar la notificación
+    console.log('Webhook received', notification);
+
+    // Guardar o procesar los datos recibidos, por ejemplo, en una base de datos
+    // ...
+
+    // Confirmar la recepción
+    res.status(200).end();
+  } else {
+    res.setHeader('Allow', ['POST']);
+    res.status(405).end('Method Not Allowed');
+  }
+}

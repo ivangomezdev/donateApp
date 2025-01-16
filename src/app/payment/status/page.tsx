@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const page = () => {
-    const fetchData = async () =>{
-        const fetchRes = await fetch("https://donate-app-kappa.vercel.app/api/payment/status")
-        const response = await fetchRes
-        console.log(response);
-        
-    }
-    fetchData()
+const PaymentStatusPage = () => {
+  useEffect(() => {
+    const fetchPaymentStatus = async () => {
+      const response = await fetch("/api/payment/status");
+      const data = await response.json();
+      console.log(data);
+      
+      // Aquí podrías actualizar la UI basada en la respuesta
+    };
+    fetchPaymentStatus();
+  }, []);
+
   return (
     <div>
-      
+      {/* Aquí podrías mostrar el estado del pago basado en 'data' */}
     </div>
   )
 }
 
-export default page
+export default PaymentStatusPage;
