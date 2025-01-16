@@ -1,5 +1,5 @@
+"use client"
 import React, { useEffect } from 'react'
-
 const PaymentStatusPage = () => {
   useEffect(() => {
     const fetchPaymentStatus = async () => {
