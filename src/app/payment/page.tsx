@@ -4,7 +4,7 @@ import React from "react";
 
 const Bff = () => {
   const applyPayment = async () => {
-    const fetchURL = await fetch("http://10.147.19.93:3000/api/payments");
+    const fetchURL = await fetch("https://donate-app-kappa.vercel.app/api/payments");
 
     const response = await fetchURL.text();
     console.log(response);
