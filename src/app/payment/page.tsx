@@ -8,6 +8,8 @@ const Bff = () => {
 
     const response = await fetchURL.text();
     console.log(response);
+    console.log("actualizado");
+    
     
     if (response && response !== undefined) {
       
