@@ -41,7 +41,7 @@ export async function createSingleProductPreference(
       },
       // URL de redirección en los distintos casos
       back_urls: {
-        success: "https://test.com/success",
+        success: "https://donate-app-kappa.vercel.app/payment/status",
         failure: "https://test.com/failure",
         pending: "https://test.com/pending",
       },
