@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const {send} = require('micro')
+
+
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const methods = require('micro-method-router')
 
