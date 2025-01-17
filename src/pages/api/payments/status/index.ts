@@ -5,13 +5,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 const methods = require('micro-method-router')
 
 export default methods({
-  async get(req: NextApiRequest, res: NextApiResponse) {
+  async post(req: NextApiRequest, res: NextApiResponse) {
     const payload = req.body
-    if (payload.type === "payment") {
-        const mpPayment = await payload.data.id;
-        console.log(mpPayment);
-        
-    }
-    console.log(payload);
+    console.log(JSON.stringify(payload))
     res.send({ok:true})
   }})
+
+  
