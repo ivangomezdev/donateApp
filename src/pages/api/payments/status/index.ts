@@ -7,8 +7,8 @@ const methods = require('micro-method-router')
 export default methods({
   async post(req: NextApiRequest, res: NextApiResponse) {
     const payload = req.body
+      
     console.log(JSON.stringify(payload))
-    res.send({ok:true})
+    res.status(200).json({ ok: true });
   }})
 
-  
