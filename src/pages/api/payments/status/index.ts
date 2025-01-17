@@ -1,13 +1,19 @@
-import { NextApiRequest, NextApiResponse } from "next";
+  import { NextApiRequest, NextApiResponse } from "next";
+  import { Product } from "../../../../app/models/products";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "POST") {
-    const payload = req.body;
-    console.log(payload.json());
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const methods = require('micro-method-router')
 
-    return res.status(200).json({ ok: true });
-  }
+  export default methods({
+   async post(req: NextApiRequest, res: NextApiResponse) {
+      const payload = req.body
 
-  res.setHeader("Allow", ["POST"]); // Permitir solo POST
-  res.status(405).json({ error: "Method Not Allowed" }); // Método no permitido
-}
+        
+        await Product.sync({ force: true });
+        const newProduct = new Product({ name: payload.data.id, precio: payload.id });
+        await newProduct.save();
+  
+      console.log(JSON.stringify(payload))
+      res.status(200).json({ ok: true });
+    }})
+
